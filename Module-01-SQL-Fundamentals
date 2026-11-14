@@ -1,0 +1,1450 @@
+
+-- =============================================
+-- Roteiro para Desenvolvedor SQL
+-- Módulo 01 - Fundamentos de SQL
+-- Lição 01 - Criação de Banco de Dados
+-- SQL Developer Roadmap
+-- Module 01 - SQL Fundamentals
+-- Lesson 01 - Database Creation
+-- =============================================
+
+-- Criar o banco de dados. | Creating the database.
+-- SQL
+IF DB_ID('SQLRoadmapTrainingDB') IS NULL
+BEGIN
+    CREATE DATABASE SQLRoadmapTrainingDB;
+END;
+GO
+
+-- Usando o banco de dados criado. | Using the created database.
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- Verificando a criação do banco de dados. | Verifying database creation.
+-- SQL
+SELECT
+    name,
+    database_id,
+    create_date
+FROM sys.databases
+WHERE name = 'SQLRoadmapTrainingDB';
+GO
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 2: CREATE TABLE e tipos de dados
+-- Lesson 2: CREATE TABLE and data types
+-- =========================================================
+--
+-- 01-Basics|
+-- ├── 01-create-database
+-- ├── 02-create-customers-table
+-- └── 03-create-products-table
+
+-- Entendendo os tipos de dados
+-- Estes são alguns dos tipos mais utilizados no SQL Server:
+-- Understanding data types
+-- These are some of the most commonly used types in SQL Server:
+--   - Tipo  Utilização	Exemplo | Type	Usage	Example
+--   - INT	            Números inteiros | Integers :           100
+--   - BIGINT	        Inteiros maiores | Larger integers :    9000000000
+--   - VARCHAR(255)	    Texto variável | Variable text :        'John'
+--   - NVARCHAR(max)	Texto Unicode | Unicode text :          'João'
+--   - DECIMAL(10,2)	Valores decimais | Decimal values :     199.90
+--   - BIT	            Verdadeiro ou falso | True or false :   1 ou 0
+--   - DATE         	Data | Date : 	                        '2026-11-12'
+--   - DATETIME2	    Data e horário | Date and time :        '2026-11-12 10:30:00'
+
+-- Usando o banco de dados criado. | Using the created database.
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- Criando a tabela Customers. | Create Customers table.
+-- SQL
+CREATE TABLE Customers
+(
+    CustomerId INT IDENTITY(1,1) PRIMARY KEY,
+    FullName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(150) NOT NULL UNIQUE,
+    Phone VARCHAR(20) NULL,
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+GO
+
+-- Criando a tabela Products. | Create Products table.
+-- SQL
+CREATE TABLE Products
+(
+    ProductId INT IDENTITY(1,1) PRIMARY KEY,
+    ProductName NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(500) NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    StockQuantity INT NOT NULL DEFAULT 0,
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+
+    CONSTRAINT CK_Products_Price
+        CHECK (Price >= 0),
+
+    CONSTRAINT CK_Products_Stock
+        CHECK (StockQuantity >= 0)
+);
+GO
+
+--
+-- Exercícios para fixação
+-- Tente responder sem consultar as explicações acima.
+-- Quiz da Aula 2
+-- 3|3 respondidas
+--
+-- 1. Qual é a função do IDENTITY(1,1)?
+-- [ ] 1. Cria um campo de texto
+-- [X] 2. Gera valores numéricos automaticamente
+-- [ ] 3. Impede valores duplicados em qualquer coluna
+-- Correto
+-- IDENTITY gera valores sequenciais automaticamente. A PRIMARY KEY é que garante a unicidade da chave.
+--
+-- 2. Qual constraint impede que o preço seja negativo?
+-- [ ] 1. UNIQUE
+-- [ ] 2. DEFAULT
+-- [X] 3. CHECK
+-- Correto
+-- CHECK permite validar uma condição para os valores inseridos ou atualizados.
+--
+-- 3. Qual a diferença entre NOT NULL e UNIQUE?
+-- [X] 1. NOT NULL exige valor; UNIQUE impede duplicidade
+-- [ ] 2. São equivalentes
+-- [ ] 3. UNIQUE exige valor; NOT NULL impede duplicidade
+-- Correto
+-- NOT NULL impede ausência de valor. UNIQUE impede valores duplicados na coluna ou combinação de colunas.
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 3 – SQL Server: INSERT INTO e SELECT.
+-- Lesson 3 - SQL Server: INSERT INTO and SELECT.
+-- =========================================================
+
+-- Verificando se as tabelas existem. | Checking if the tables exist.
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+SELECT * FROM Customers;
+GO
+
+SELECT * FROM Products;
+GO
+
+-- Inseriindo dados na tabela Customers. | Inserting data into the Customers table.
+-- SQL
+INSERT INTO Customers
+    (FullName, Email, Phone)
+VALUES
+    ('Joao Silva', 'joao@email.com', '21999990001'),
+    ('Maria Santos', 'maria@email.com', '21999990002'),
+    ('Pedro Oliveira', 'pedro@email.com', '21999990003'),
+    ('Ana Costa', 'ana@email.com', '21999990004');
+GO
+
+-- conferindo. | checking.
+SELECT * FROM Customers
+GO
+
+-- Inseriindo dados na tabela Products. | Inserting data into the Products table.
+-- SQL
+INSERT INTO Products
+    (ProductName, Description, Price, StockQuantity)
+VALUES
+    ('Notebook Dell', 'Notebook Intel Core i7', 4500.00, 10),
+    ('Mouse Logitech', 'Mouse sem fio', 120.00, 50),
+    ('Keyboard Logitech', 'Teclado mecânico', 350.00, 20),
+    ('Monitor Samsung', 'Monitor 27 polegadas', 1300.00, 15);
+GO
+
+SELECT * FROM Products
+GO
+
+-- Trabalhar com filtros. | Work with filters.
+-- Buscar um cliente específico. | Search for a specific customer.
+-- SQL
+SELECT *
+FROM Customers
+WHERE FullName = 'Joao Silva';
+
+-- Produtos acima de R$ 300. | Products over R$ 300.
+-- SQL
+SELECT *
+FROM Products
+WHERE Price > 300;
+
+-- Produtos com estoque maior que 10. | Products with more than 10 in stock.
+-- SQL
+SELECT *
+FROM Products
+WHERE StockQuantity > 10;
+
+-- Ordenar resultados | Sort results
+
+-- Produtos do mais caro para o mais barato. | Products from most expensive to least expensive.
+-- SQL
+SELECT *
+FROM Products
+ORDER BY Price DESC;
+
+-- Clientes em ordem alfabética. | Clients in alphabetical order.
+-- SQL
+SELECT *
+FROM Customers
+ORDER BY FullName ASC;
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 4 – SQL Server: UPDATE e DELETE.
+-- Lesson 4 - SQL Server: UPDATE and DELETE.
+-- =========================================================
+
+-- Verificando se esta usando Banco de Dados correto. | Checking if the correct database is being used
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- Atualizando registro de Telefone do Customers usando UPDATE. | Updating the phone record for Customers using UPDATE.
+-- SQL
+UPDATE Customers
+SET Phone = '21988887777'
+WHERE Email = 'joao@email.com';
+GO
+
+-- conferindo. | checking.
+SELECT *
+FROM Customers
+WHERE Email = 'joao@email.com';
+
+-- Atualizando registro de Price do Products usando UPDATE. | Updating the Price for Products using UPDATE.
+-- SQL
+UPDATE Products
+SET Price = 4999.90
+WHERE ProductName = 'Notebook Dell';
+GO
+
+-- conferindo. | checking.
+SELECT ProductName, Price
+FROM Products
+WHERE ProductName = 'Notebook Dell';
+
+-- UPDATE com múltiplas colunas. | UPDATE with multiple columns
+-- SQL
+UPDATE Products
+SET
+    Price = 150.00,
+    StockQuantity = 60
+WHERE ProductName = 'Mouse Logitech';
+GO
+
+-- conferindo. | checking.
+SELECT ProductName, Price, StockQuantity
+FROM Products
+WHERE ProductName = 'Mouse Logitech';
+
+
+-- ATENÇÃO: nunca execute UPDATE ou DELETE, sem verificar a condição WHERE.
+-- WARNING: never execute UPDATE or DELETE, without checking the WHERE condition.
+
+-- DELETE: excluir registros "!* Nunca execute um UPDATE ou DELETE sem verificar a condição "WHERE", Se esquecer vai exclui todos os registros da tabela *!."
+-- DELETE: delete records "!* Never perform an UPDATE or DELETE without checking the "WHERE" condition, if you forget it will delete all records from the table *!."
+-- SQL
+DELETE FROM Customers
+WHERE Email = 'pedro@email.com';
+GO
+
+-- conferindo. | checking.
+SELECT *
+FROM Customers
+WHERE Email = 'pedro@email.com';
+
+-- Transações: BEGIN TRANSACTION e uma prática profissional é utilizar transações para testar alterações antes de confirmá-las.
+-- Transactions: BEGIN TRANSACTION — it is a professional best practice to use transactions to test changes before committing them.
+-- SQL
+BEGIN TRANSACTION;
+
+UPDATE Products
+SET Price = 999.90
+WHERE ProductName = 'Mouse Logitech';
+FROM Products
+WHERE ProductName = 'Mouse Logitech';
+
+-- Desfaz a alteração dentro da transação.
+-- Undoes the change within the transaction.
+ROLLBACK TRANSACTION;
+
+
+-- Exercício prático, Agora tente resolver estes desafios sozinho:
+-- Practical exercise: Now try to solve these challenges on your own:
+-- Desafios da Aula 04 | Challenges for Lesson 04
+-- [ ] 1. Atualize o telefone de Maria Santos para 21977776666. | 1. Update Maria Santos's phone number to 21977776666.
+-- [ ] 2. Aumente o preço do Monitor Samsung para R$ 1.500,00. | 2. Increase the price of the Samsung monitor to R$ 1,500.00.
+-- [ ] 3. Atualize o estoque do Notebook Dell para 25 unidades. | 3. Update the stock for the Dell laptop to 25 units.
+-- [ ] 4. Consulte o cliente Ana Costa antes de qualquer alteração. | 4. Consult client Ana Costa before making any changes.
+-- [ ] 5. Crie uma transação que altere o preço do Keyboard Logitech e depois desfaça a alteração com ROLLBACK. | 5. Create a transaction that changes the price of the Logitech keyboard, and then undo the change using ROLLBACK.
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 5 – Operadores SQL e Filtros Avançados
+-- Lesson 5 – SQL Operators and Advanced Filtering.
+-- =========================================================
+
+-- ### 1. Objetivos de Aprendizagem | Learning Objectives  
+-- - Compreender operadores de comparação e lógicos. | - Understand SQL comparison and logical operators.
+-- - Aplicar condições avançadas de filtragem. | - Apply advanced filtering conditions.
+-- - Pesquisar registros utilizando padrões e intervalos. | - Search records using patterns and ranges.
+-- - Identificar valores NULL e não NULL. | - Identify NULL and non-NULL values.
+
+-- ### 2. Operadores SQL |  SQL Operators
+-- |    Operator    |     Description                     |   Descrição |
+-- |      ---       |        ---                          |     ---           |
+-- | AND            | Both conditions must be true        | Ambas as condições devem ser verdadeiras |
+-- | OR             | At least one condition must be true | Pelo menos uma condição deve ser verdadeira |
+-- | IN             | Matches values in a list            | Compara valores de uma lista |
+-- | NOT IN         | Excludes values from a list         | Exclui valores de uma lista |
+-- | BETWEEN        | Filters a range of values           | Filtra um intervalo de valores |
+-- | LIKE           | Searches for a text pattern         | Pesquisa um padrão de texto |
+-- | IS NULL        | Finds NULL values                   | Localiza valores nulos |
+-- | IS NOT NULL    | Finds non-NULL values               | Localiza valores preenchidos |
+
+-- ### 3. Practical Examples | Exemplos Práticos
+-- Verificando se esta usando Banco de Dados correto. | Checking if the correct database is being used.
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- AND: Ambas as condições devem ser verdadeiras. | AND: Both conditions must be true.
+-- SQL
+SELECT ProductName, Price, StockQuantity
+FROM Products
+WHERE Price > 300 AND StockQuantity > 10;
+GO
+
+-- OR: Pelo menos uma condição deve ser verdadeira. | OR: At least one condition must be true.
+-- SQL
+SELECT ProductName, Price
+FROM Products
+WHERE Price < 200
+OR Price > 1000;
+GO
+
+-- IN: Pesquisar valores específicos. | IN: Search for specific values.
+-- SQL
+SELECT *
+FROM Products
+WHERE ProductName IN (
+    'Notebook Dell',
+    'Mouse Logitech'
+);
+GO
+
+-- NOT IN: Excluir valores específicos. | NOT IN: Exclude specific values.
+-- SQL
+SELECT *
+FROM Products
+WHERE ProductName NOT IN (
+    'Notebook Dell',
+    'Mouse Logitech'
+);
+GO
+
+-- BETWEEN: Filtrar produtos por intervalo de preço. |  BETWEEN: Filter products by price range.
+-- SQL
+SELECT ProductName, Price
+FROM Products
+WHERE Price BETWEEN 100 AND 1500;
+GO
+
+-- LIKE: Nomes iniciados com M. | LIKE: Names starting with M.
+-- SQL
+SELECT *
+FROM Customers
+WHERE FullName LIKE 'M%';
+GO
+
+-- Nomes contendo "Sil". | Names containing "Sil".
+-- SQL
+SELECT *
+FROM Customers
+WHERE FullName LIKE '%Sil%';
+GO
+
+-- IS NULL: Clientes sem telefone. | IS NULL: Customers without phone numbers
+-- SQL
+SELECT *
+FROM Customers
+WHERE Phone IS NULL;
+GO
+
+-- IS NOT NULL: Clientes com telefone. | IS NOT NULL: Customers with phone numbers.
+-- SQL
+SELECT *
+FROM Customers
+WHERE Phone IS NOT NULL;
+GO
+
+
+--  ### 4. Practical Exercises | Exercícios Práticos
+-- 1. Find products with a price greater than R$ 500 and stock greater than 10.
+-- 2. Find products with prices between R$ 100 and R$ 2,000.
+-- 3. Find customers whose names start with the letter M.
+-- 4. List products excluding Notebook Dell and Mouse Logitech.
+-- 5. Find customers without a registered phone number.
+
+-- 1. Encontre produtos com preço superior a R$ 500 e estoque maior que 10.
+-- 2. Encontre produtos com preços entre R$ 100 e R$ 2.000.
+-- 3. Encontre clientes cujos nomes começam com a letra M.
+-- 4. Liste produtos excluindo Notebook Dell e Mouse Logitech.
+-- 5. Encontre clientes sem telefone cadastrado.
+
+
+-- ### 5. Important Notes | Observações Importantes
+-- - BETWEEN includes both boundary values.
+-- - LIKE uses `%` to represent any sequence of characters.
+-- - LIKE uses `_` to represent a single character.
+-- - NULL must be checked using IS NULL or IS NOT NULL, not `= NULL`.
+
+-- - BETWEEN inclui os dois valores limites.
+-- - LIKE utiliza `%` para representar qualquer sequência de caracteres.
+-- - LIKE utiliza `_` para representar um único caractere.
+-- - NULL deve ser verificado com IS NULL ou IS NOT NULL, nunca com `= NULL`.
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 6 – Funções de Agregação e GROUP BY.
+-- Lesson 6 – Aggregate Functions and GROUP BY.
+-- =========================================================
+
+-- ### 1. Objetivos de Aprendizagem. 				 | ### 1. Learning Objectives.
+-- - Calcular totais, médias e quantidades.			 | - Calculate totals, averages and quantities.
+-- - Agrupar registros utilizando GROUP BY.			 | - Group records using GROUP BY.
+-- - Filtrar resultados agrupados utilizando HAVING. | - Filter grouped results using HAVING.
+-- - Compreender funções de agregação.				 | - Understand aggregate functions.
+
+-- ### 2. Funções de Agregação. | ### 2. Aggregate Functions
+-- | Function 	|		Descrição		|	Description |
+-- |	---		|		  ---			|		---			|
+-- | COUNT() 	| Conta registros		| Counts records  |
+-- | SUM() 		| Calcula somatórios	| Calculates totals |
+-- | AVG() 		| Calcula médias 		| Calculates averages |
+-- | MIN() 		| Retorna o menor valor | Returns the minimum value |
+-- | MAX() 		| Retorna o maior valor | Returns the maximum value |
+-- | GROUP BY 	| Agrupa registros		| Groups records |
+-- | HAVING 	| Filtra grupos         | Filters groups |
+
+-- ### 3. Exemplos Práticos | ### 3. Practical Examples
+-- Verificando se esta usando Banco de Dados correto. | Checking if the correct database is being used
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- COUNT: Total de clientes. | COUNT: Total customers.
+-- SQL
+SELECT COUNT(*) AS TotalCustomers
+FROM Customers;
+GO
+
+-- COUNT: Total de produtos. | COUNT: Total products.
+-- SQL
+SELECT COUNT(*) AS TotalProducts
+FROM Products;
+GO
+
+-- SUM: Valor financeiro total do estoque. | SUM: Total inventory value.
+-- SQL
+SELECT SUM(Price * StockQuantity) AS TotalInventoryValue
+FROM Products;
+GO
+
+-- AVG: Preço médio dos produtos. | AVG: Average product price.
+-- SQL
+SELECT AVG(Price) AS AveragePrice
+FROM Products;
+GO
+
+-- MIN: Menor preço. | MIN: Lowest product price.
+-- SQL
+SELECT MIN(Price) AS LowestPrice
+FROM Products;
+GO
+
+-- MAX: Maior preço. | MAX: Highest product price
+-- SQL
+SELECT MAX(Price) AS HighestPrice
+FROM Products;
+GO
+
+-- GROUP BY: Agrupar produtos por status. | GROUP BY: Group products by status
+-- SQL
+SELECT
+    IsActive,
+    COUNT(*) AS TotalProducts
+FROM Products
+GROUP BY IsActive;
+GO
+
+-- HAVING: Filtrar resultados agrupados. | HAVING: Filter grouped results
+-- SQL
+SELECT
+    IsActive,
+    COUNT(*) AS TotalProducts
+FROM Products
+GROUP BY IsActive
+HAVING COUNT(*) > 1;
+GO
+
+-- ### 4. Exercícios Práticos              			| ### 4.Practical Exercises 
+-- 1. Conte todos os clientes cadastrados. 			| 1. Count all registered customers.
+-- 2. Calcule o preço médio dos produtos.  			| 2. Calculate the average product price.
+-- 3. Encontre o produto mais caro.        			| 3. Find the most expensive product.
+-- 4. Encontre o produto mais barato.      			| 4. Find the cheapest product.
+-- 5. Calcule o valor financeiro total do estoque.	| 5. Calculate the total inventory value.
+-- 6. Agrupe os produtos pelo campo IsActive.		| 6. Group products by IsActive.
+-- 7. Exiba somente grupos com mais de um produto.	| 7. Display only groups containing more than one product.
+
+-- ### 5. Observações Importantes. 							 | ### 5. Important Notes. 
+-- - WHERE filtra registros antes do agrupamento.			 | - WHERE filters individual rows before grouping.
+-- - HAVING filtra grupos depois do GROUP BY. 				 | - HAVING filters groups after GROUP BY.
+-- - Funções de agregação podem ser combinadas com GROUP BY. | - Aggregate functions can be combined with GROUP BY.
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 7 – JOINs e Relacionamentos entre Tabelas.
+-- Lesson 7 – JOINs and Table Relationships.
+-- =========================================================
+
+-- ### 1. Objetivos de Aprendizagem 							 | ### 1. Learning Objectives
+-- - Compreender relacionamentos em bancos de dados relacionais. | - Understand relational database relationships.
+-- - Relacionar múltiplas tabelas utilizando JOIN. 				 | - Connect multiple tables using JOIN.
+-- - Recuperar informações relacionadas de diferentes tabelas.   | - Retrieve related information from different tables.
+-- - Compreender chaves primárias e estrangeiras. 				 | - Understand primary and foreign keys.
+
+-- ### 2. JOIN Types | Tipos de JOIN
+
+-- | 		JOIN 		|		 Description 									  | Descrição 		|
+-- |		---			|			---											  |		---			|
+-- | INNER JOIN			| Retorna registros correspondentes						  | Returns matching records | 
+-- | LEFT JOIN			| Retorna todos os registros da tabela à esquerda		  | Returns all left-side records | 
+-- | RIGHT JOIN			| Retorna todos os registros da tabela à direita		  | Returns all right-side records |
+-- | FULL OUTER JOIN	| Retorna registros correspondentes e não correspondentes | Returns matching and non-matching records | 
+
+-- Verificando se esta usando Banco de Dados correto | Checking if the correct database is being used
+-- SQL
+USE SQLRoadmapTrainingDB;
+GO
+
+-- ### 3. Criar Tabela Orders  | ### 3. Create Orders Table
+-- SQL
+IF OBJECT_ID('dbo.Orders', 'U') IS NULL
+BEGIN
+    CREATE TABLE Orders
+    (
+        OrderId INT IDENTITY(1,1) PRIMARY KEY,
+        CustomerId INT NOT NULL,
+        OrderDate DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+        OrderStatus NVARCHAR(30) NOT NULL DEFAULT 'Pending',
+
+        CONSTRAINT FK_Orders_Customers
+            FOREIGN KEY (CustomerId)
+            REFERENCES Customers(CustomerId)
+    );
+END;
+GO
+
+-- ### 4. Criar Tabela OrderItems. | Create OrderItems Table.
+-- SQL
+IF OBJECT_ID('dbo.OrderItems', 'U') IS NULL
+BEGIN
+    CREATE TABLE OrderItems
+    (
+        OrderItemId INT IDENTITY(1,1) PRIMARY KEY,
+        OrderId INT NOT NULL,
+        ProductId INT NOT NULL,
+        Quantity INT NOT NULL,
+        UnitPrice DECIMAL(10,2) NOT NULL,
+
+        CONSTRAINT FK_OrderItems_Orders
+            FOREIGN KEY (OrderId)
+            REFERENCES Orders(OrderId),
+
+        CONSTRAINT FK_OrderItems_Products
+            FOREIGN KEY (ProductId)
+            REFERENCES Products(ProductId),
+
+        CONSTRAINT CK_OrderItems_Quantity
+            CHECK (Quantity > 0),
+
+        CONSTRAINT CK_OrderItems_UnitPrice
+            CHECK (UnitPrice >= 0)
+    );
+END;
+GO
+
+-- ### 5. Inserir Pedidos de Teste. | Insert Sample Orders.
+-- Inserir pedidos de exemplo. | Insert sample orders
+-- SQL
+INSERT INTO Orders (CustomerId, OrderStatus)
+SELECT CustomerId, 'Completed'
+FROM Customers
+WHERE Email = 'joao@email.com'
+AND NOT EXISTS (
+    SELECT 1 FROM Orders
+    WHERE CustomerId = Customers.CustomerId
+);
+
+INSERT INTO Orders (CustomerId, OrderStatus)
+SELECT CustomerId, 'Pending'
+FROM Customers
+WHERE Email = 'maria@email.com'
+AND NOT EXISTS (
+    SELECT 1 FROM Orders
+    WHERE CustomerId = Customers.CustomerId
+);
+
+INSERT INTO Orders (CustomerId, OrderStatus)
+SELECT CustomerId, 'Processing'
+FROM Customers
+WHERE Email = 'ana@email.com'
+AND NOT EXISTS (
+    SELECT 1 FROM Orders
+    WHERE CustomerId = Customers.CustomerId
+);
+GO
+
+-- ### 6. INNER JOIN
+-- Consultar pedidos e informações dos clientes. | Retrieve orders and customer information
+-- SQL
+SELECT
+    O.OrderId,
+    C.FullName,
+    O.OrderDate,
+    O.OrderStatus
+FROM Orders O
+INNER JOIN Customers C
+    ON O.CustomerId = C.CustomerId;
+GO
+
+-- ### 7. LEFT JOIN
+-- Consultar todos os clientes, inclusive aqueles sem pedidos. | Retrieve all customers, including customers without orders
+-- SQL
+SELECT
+    C.CustomerId,
+    C.FullName,
+    O.OrderId,
+    O.OrderStatus
+FROM Customers C
+LEFT JOIN Orders O
+    ON C.CustomerId = O.CustomerId;
+GO
+
+
+-- ### 8. RIGHT JOIN
+-- Consultar todos os pedidos e seus clientes. | Retrieve all orders and their customers
+-- SQL
+SELECT
+    C.FullName,
+    O.OrderId,
+    O.OrderStatus
+FROM Customers C
+RIGHT JOIN Orders O
+    ON C.CustomerId = O.CustomerId;
+GO
+```
+
+-- ### 9. FULL OUTER JOIN
+-- Consultar registros correspondentes e não correspondentes. | Retrieve matching and non-matching records
+-- SQL
+SELECT
+    C.FullName,
+    O.OrderId,
+    O.OrderStatus
+FROM Customers C
+FULL OUTER JOIN Orders O
+    ON C.CustomerId = O.CustomerId;
+GO
+
+--### 10. Insert Order Items | Inserir Itens dos Pedidos
+-- Inserir dois mouses Logitech em cada pedido concluído. | Insert two Logitech mice into each completed order
+-- SQL
+INSERT INTO OrderItems
+    (OrderId, ProductId, Quantity, UnitPrice)
+SELECT
+    O.OrderId,
+    P.ProductId,
+    2,
+    P.Price
+FROM Orders O
+INNER JOIN Products P
+    ON P.ProductName = 'Mouse Logitech'
+WHERE O.OrderStatus = 'Completed'
+AND NOT EXISTS (
+    SELECT 1
+    FROM OrderItems OI
+    WHERE OI.OrderId = O.OrderId
+    AND OI.ProductId = P.ProductId
+);
+GO
+
+
+-- ### 11. Relacionar Múltiplas Tabelas | ### 11. JOIN Multiple Tables
+-- Consultar detalhes dos pedidos. | Retrieve order details
+-- SQL
+SELECT
+    O.OrderId,
+    C.FullName,
+    P.ProductName,
+    OI.Quantity,
+    OI.UnitPrice,
+    OI.Quantity * OI.UnitPrice AS Total
+FROM Orders O
+INNER JOIN Customers C
+    ON O.CustomerId = C.CustomerId
+INNER JOIN OrderItems OI
+    ON O.OrderId = OI.OrderId
+INNER JOIN Products P
+    ON OI.ProductId = P.ProductId;
+GO
+
+-- ### 12. Practical Exercises | Exercícios Práticos
+-- 1. Liste todos os clientes e seus pedidos. | 1. List all customers and their orders.
+-- 2. Encontre clientes que possuem pedidos. | Find customers who have placed orders.
+-- 3. Encontre clientes que não possuem pedidos. | 3. Find customers who have not placed orders.
+-- 4. Liste os produtos vendidos em cada pedido. | 4. List products sold in each order.
+-- 5. Calcule o valor total de cada pedido. | 5. Calculate the total value of each order.
+
+-- ### 13. Important Notes | Observações Importantes
+-- - Chaves primárias identificam registros de forma única. | - Primary keys uniquely identify records.
+-- - Chaves estrangeiras estabelecem relacionamentos entre tabelas. | - Foreign keys establish relationships between tables.
+-- - JOINs são fundamentais para bancos de dados relacionais. | - JOIN operations are fundamental for relational databases.
+-- - INSERTs de demonstração devem ser executados apenas uma vez ou protegidos contra duplicidades. | - Sample INSERT statements should be executed only once or protected against duplicates.
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 8 – Subconsultas e EXISTS.
+-- Lesson 8 – Subqueries and EXISTS.
+-- =========================================================
+
+-- ### 1. Learning Objectives | Objetivos de Aprendizagem
+
+-- - Compreender consultas SQL aninhadas. | - Understand nested SQL queries.
+-- - Utilizar subconsultas com WHERE e IN. | - Use subqueries with WHERE and IN.
+-- - Recuperar registros utilizando EXISTS. | - Retrieve records using EXISTS.
+-- - Identificar registros utilizando NOT EXISTS. | - Identify records using NOT EXISTS.
+
+-- ### 2. Subconsulta com WHERE | ### 2. Subquery with WHERE
+
+**File:** `08-subqueries-exists.sql`
+
+```sql
+USE SQLRoadmapTrainingDB;
+GO
+
+-- Products with prices above the average
+-- Produtos com preços acima da média
+
+SELECT
+    ProductName,
+    Price
+FROM Products
+WHERE Price > (
+    SELECT AVG(Price)
+    FROM Products
+);
+GO
+```
+
+### 3. Subquery with IN | Subconsulta com IN
+
+```sql
+-- Customers who have placed orders
+-- Clientes que possuem pedidos
+
+SELECT
+    FullName,
+    Email
+FROM Customers
+WHERE CustomerId IN (
+    SELECT CustomerId
+    FROM Orders
+);
+GO
+```
+
+### 4. NOT IN
+
+```sql
+-- Customers without orders
+-- Clientes sem pedidos
+
+SELECT
+    FullName,
+    Email
+FROM Customers
+WHERE CustomerId NOT IN (
+    SELECT CustomerId
+    FROM Orders
+);
+GO
+```
+
+### 5. EXISTS
+
+```sql
+-- Find customers with existing orders
+-- Encontrar clientes que possuem pedidos
+
+SELECT
+    C.FullName,
+    C.Email
+FROM Customers C
+WHERE EXISTS (
+    SELECT 1
+    FROM Orders O
+    WHERE O.CustomerId = C.CustomerId
+);
+GO
+```
+
+### 6. NOT EXISTS
+
+```sql
+-- Find customers without orders
+-- Encontrar clientes sem pedidos
+
+SELECT
+    C.FullName,
+    C.Email
+FROM Customers C
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Orders O
+    WHERE O.CustomerId = C.CustomerId
+);
+GO
+```
+
+### 7. Practical Exercises | Exercícios Práticos
+
+1. Find products with prices above the average.
+2. Find customers who have placed orders.
+3. Find customers without orders.
+4. Find products with prices greater than the average product price.
+5. Use EXISTS to find customers with completed orders.
+
+1. Encontre produtos com preços acima da média.
+2. Encontre clientes que possuem pedidos.
+3. Encontre clientes sem pedidos.
+4. Encontre produtos com preço superior à média.
+5. Utilize EXISTS para encontrar clientes com pedidos concluídos.
+
+### 8. Important Notes | Observações Importantes
+
+- A subquery is a query nested inside another query.
+- EXISTS checks whether the subquery returns at least one row.
+- NOT EXISTS is generally safer than NOT IN when NULL values may occur in the subquery.
+
+- Uma subconsulta é uma consulta dentro de outra consulta.
+- EXISTS verifica se a subconsulta retorna pelo menos um registro.
+- NOT EXISTS geralmente é mais seguro que NOT IN quando a subconsulta pode retornar NULL.
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 9 – Views no SQL Server.
+-- Lesson 9 – SQL Views.
+-- =========================================================
+
+-- ### 1. Objetivos de Aprendizagem | ### 1. Learning Objectives
+
+- Understand SQL Views.
+- Create reusable queries.
+- Simplify reporting queries.
+- Modify existing Views.
+
+- Compreender Views no SQL Server.
+- Criar consultas reutilizáveis.
+- Simplificar consultas para relatórios.
+- Modificar Views existentes.
+
+### 2. Create Customer Orders View | Criar View de Clientes e Pedidos
+
+**File:** `09-views.sql`
+
+```sql
+USE SQLRoadmapTrainingDB;
+GO
+
+CREATE OR ALTER VIEW dbo.vw_CustomerOrders
+AS
+SELECT
+    C.CustomerId,
+    C.FullName,
+    C.Email,
+    O.OrderId,
+    O.OrderDate,
+    O.OrderStatus
+FROM Customers C
+INNER JOIN Orders O
+    ON C.CustomerId = O.CustomerId;
+GO
+```
+
+### 3. Query the View | Consultar a View
+
+```sql
+SELECT *
+FROM dbo.vw_CustomerOrders;
+GO
+```
+
+### 4. Create Product Inventory View | Criar View de Estoque
+
+```sql
+CREATE OR ALTER VIEW dbo.vw_ProductInventory
+AS
+SELECT
+    ProductId,
+    ProductName,
+    Price,
+    StockQuantity,
+    Price * StockQuantity AS TotalInventoryValue
+FROM Products;
+GO
+```
+
+### 5. Query Product Inventory | Consultar Estoque
+
+```sql
+SELECT *
+FROM dbo.vw_ProductInventory
+ORDER BY TotalInventoryValue DESC;
+GO
+```
+
+### 6. Practical Exercises | Exercícios Práticos
+
+1. Create a View containing customers with orders.
+2. Create a View showing products and inventory values.
+3. Query a View using WHERE.
+4. Sort View results by product price.
+5. Explain the difference between a table and a View.
+
+1. Crie uma View com clientes que possuem pedidos.
+2. Crie uma View mostrando produtos e valores de estoque.
+3. Consulte uma View utilizando WHERE.
+4. Ordene os resultados por preço.
+5. Explique a diferença entre tabela e View.
+
+### 7. Important Notes | Observações Importantes
+
+- A standard View stores a query definition, not an independent copy of the underlying data.
+- Views can simplify complex queries.
+- Views can be used in SELECT statements like tables.
+
+- Uma View comum armazena a definição de uma consulta, não uma cópia independente dos dados.
+- Views podem simplificar consultas complexas.
+- Views podem ser utilizadas em SELECTs como tabelas.
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 10 – Índices e Desempenho de Consultas.
+-- Lesson 10 – Indexes and Query Performance.
+-- =========================================================
+
+-- ### 1. Learning Objectives | Objetivos de Aprendizagem
+
+- Understand database indexes.
+- Create nonclustered indexes.
+- Analyze query execution plans.
+- Understand index performance impacts.
+
+- Compreender índices de banco de dados.
+- Criar índices não clusterizados.
+- Analisar planos de execução.
+- Compreender os impactos dos índices no desempenho.
+
+### 2. Query Existing Indexes | Consultar Índices Existentes
+
+**File:** `10-indexes-performance.sql`
+
+```sql
+USE SQLRoadmapTrainingDB;
+GO
+
+SELECT
+    name,
+    type_desc,
+    is_unique
+FROM sys.indexes
+WHERE object_id = OBJECT_ID('dbo.Customers');
+GO
+```
+
+### 3. Create Nonclustered Index | Criar Índice Não Clusterizado
+
+```sql
+-- Create an index for customer phone searches
+-- Criar índice para pesquisas por telefone
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.indexes
+    WHERE name = 'IX_Customers_Phone'
+    AND object_id = OBJECT_ID('dbo.Customers')
+)
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Customers_Phone
+    ON Customers(Phone);
+END;
+GO
+```
+
+### 4. Create Product Index | Criar Índice de Produtos
+
+```sql
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.indexes
+    WHERE name = 'IX_Products_ProductName'
+    AND object_id = OBJECT_ID('dbo.Products')
+)
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Products_ProductName
+    ON Products(ProductName);
+END;
+GO
+```
+
+### 5. Query Using an Indexed Column | Consultar Coluna Indexada
+
+```sql
+SELECT
+    ProductId,
+    ProductName,
+    Price
+FROM Products
+WHERE ProductName = 'Notebook Dell';
+GO
+```
+
+### 6. Execution Plan | Plano de Execução
+
+In SQL Server Management Studio:
+
+1. Open the SQL query.
+2. Press CTRL + M to enable the actual execution plan.
+3. Execute the query.
+4. Analyze the execution plan.
+
+No SQL Server Management Studio:
+
+1. Abra a consulta SQL.
+2. Pressione CTRL + M para habilitar o plano de execução real.
+3. Execute a consulta.
+4. Analise o plano de execução.
+
+Common operators:
+
+| Operator | Description |
+|---|---|
+| Table Scan | Reads all table rows |
+| Index Scan | Scans index entries |
+| Index Seek | Searches specific index entries |
+| Key Lookup | Retrieves additional columns from the table |
+
+### 7. Practical Exercises | Exercícios Práticos
+
+1. Create an index on Customers.Phone.
+2. Create an index on Products.Price.
+3. Query products by name.
+4. Query customers by phone.
+5. Compare execution plans before and after creating indexes.
+
+1. Crie um índice em Customers.Phone.
+2. Crie um índice em Products.Price.
+3. Consulte produtos por nome.
+4. Consulte clientes por telefone.
+5. Compare os planos de execução antes e depois da criação dos índices.
+
+### 8. Important Notes | Observações Importantes
+
+- Indexes can improve data retrieval performance.
+- Indexes require additional storage.
+- Excessive indexes can negatively affect INSERT, UPDATE and DELETE operations.
+- Existing UNIQUE constraints generally create supporting indexes automatically.
+
+- Índices podem melhorar o desempenho das consultas.
+- Índices exigem espaço adicional.
+- O excesso de índices pode prejudicar operações INSERT, UPDATE e DELETE.
+- Constraints UNIQUE geralmente criam índices de suporte automaticamente.
+
+
+
+-- **##
+
+-- =========================================================
+-- Roteiro para Desenvolvedor SQL| SQL Developer Roadmap  
+-- Aula 11 – Transações e Tratamento de Erros.
+-- Lesson 11 – Transactions and Error Handling.
+-- =========================================================
+
+-- ### 1. Objetivos de Aprendizagem | ### 1. Learning Objectives
+
+- Understand SQL transactions.
+- Commit and rollback database operations.
+- Handle SQL errors using TRY...CATCH.
+- Understand transaction states.
+
+- Compreender transações SQL.
+- Confirmar e desfazer operações no banco.
+- Tratar erros utilizando TRY...CATCH.
+- Compreender estados de transações.
+
+### 2. Transaction Concepts | Conceitos de Transações
+
+| Command | Description | Descrição |
+|---|---|---|
+| BEGIN TRANSACTION | Starts a transaction | Inicia uma transação |
+| COMMIT | Confirms changes | Confirma alterações |
+| ROLLBACK | Undoes changes | Desfaz alterações |
+| TRY...CATCH | Handles errors | Trata erros |
+| XACT_STATE() | Returns transaction state | Retorna o estado da transação |
+| @@TRANCOUNT | Returns transaction nesting count | Retorna a quantidade de transações abertas |
+
+### 3. Transaction with ROLLBACK | Transação com ROLLBACK
+
+**File:** `11-transactions-error-handling.sql`
+
+```sql
+USE SQLRoadmapTrainingDB;
+GO
+
+BEGIN TRANSACTION;
+
+UPDATE Products
+SET StockQuantity = StockQuantity - 2
+WHERE ProductName = 'Mouse Logitech'
+AND StockQuantity >= 2;
+
+SELECT *
+FROM Products
+WHERE ProductName = 'Mouse Logitech';
+
+-- Undo changes
+-- Desfazer alterações
+ROLLBACK TRANSACTION;
+GO
+```
+
+### 4. Transaction with COMMIT | Transação com COMMIT
+
+```sql
+BEGIN TRANSACTION;
+
+UPDATE Products
+SET StockQuantity = StockQuantity + 5
+WHERE ProductName = 'Mouse Logitech';
+
+COMMIT TRANSACTION;
+GO
+```
+
+### 5. TRY...CATCH | Tratamento de Erros
+
+```sql
+BEGIN TRY
+
+    BEGIN TRANSACTION;
+
+    UPDATE Products
+    SET Price = 200.00
+    WHERE ProductName = 'Mouse Logitech';
+
+    IF @@ROWCOUNT = 0
+        THROW 50001, 'Product not found.', 1;
+
+    COMMIT TRANSACTION;
+
+    PRINT 'Transaction completed successfully';
+
+END TRY
+BEGIN CATCH
+
+    IF XACT_STATE() <> 0
+        ROLLBACK TRANSACTION;
+
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber,
+        ERROR_MESSAGE() AS ErrorMessage;
+
+END CATCH;
+GO
+```
+
+### 6. Practical Exercises | Exercícios Práticos
+
+1. Create a transaction that updates a product price.
+2. Use ROLLBACK to undo the change.
+3. Use COMMIT to confirm another change.
+4. Create a TRY...CATCH structure.
+5. Generate a controlled error and capture the error message.
+
+1. Crie uma transação que atualize o preço de um produto.
+2. Utilize ROLLBACK para desfazer a alteração.
+3. Utilize COMMIT para confirmar outra alteração.
+4. Crie uma estrutura TRY...CATCH.
+5. Gere um erro controlado e capture sua mensagem.
+
+### 7. Important Notes | Observações Importantes
+
+- COMMIT permanently confirms the transaction changes.
+- ROLLBACK undoes uncommitted transaction changes.
+- TRY...CATCH helps handle runtime errors.
+- Always consider transaction boundaries when working with multiple tables.
+
+- COMMIT confirma permanentemente as alterações da transação.
+- ROLLBACK desfaz alterações ainda não confirmadas.
+- TRY...CATCH ajuda a tratar erros durante a execução.
+- Sempre considere os limites das transações ao trabalhar com várias tabelas.
+
+---
+
+# Lesson 12 – Stored Procedures
+## Aula 12 – Procedimentos Armazenados
+
+### 1. Learning Objectives | Objetivos de Aprendizagem
+
+- Create and execute Stored Procedures.
+- Use input parameters.
+- Retrieve data using Stored Procedures.
+- Perform database updates through procedures.
+- Handle errors using THROW.
+
+- Criar e executar Stored Procedures.
+- Utilizar parâmetros de entrada.
+- Recuperar dados por meio de procedimentos armazenados.
+- Atualizar dados por meio de procedimentos.
+- Tratar erros utilizando THROW.
+
+### 2. Create Customer Stored Procedure | Criar Procedure de Clientes
+
+**File:** `12-stored-procedures.sql`
+
+```sql
+USE SQLRoadmapTrainingDB;
+GO
+
+CREATE OR ALTER PROCEDURE dbo.usp_GetAllCustomers
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    SELECT
+        CustomerId,
+        FullName,
+        Email,
+        Phone
+    FROM Customers;
+
+END;
+GO
+```
+
+### 3. Execute Stored Procedure | Executar Procedure
+
+```sql
+EXEC dbo.usp_GetAllCustomers;
+GO
+```
+
+### 4. Stored Procedure with Parameters | Procedure com Parâmetros
+
+```sql
+CREATE OR ALTER PROCEDURE dbo.usp_GetCustomerByEmail
+    @Email NVARCHAR(150)
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    SELECT
+        CustomerId,
+        FullName,
+        Email,
+        Phone
+    FROM Customers
+    WHERE Email = @Email;
+
+END;
+GO
+```
+
+Execute:
+
+```sql
+EXEC dbo.usp_GetCustomerByEmail
+    @Email = 'joao@email.com';
+GO
+```
+
+### 5. Product Stored Procedure | Procedure de Produtos
+
+```sql
+CREATE OR ALTER PROCEDURE dbo.usp_GetProductsByPrice
+    @MinimumPrice DECIMAL(10,2),
+    @MaximumPrice DECIMAL(10,2)
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    SELECT
+        ProductId,
+        ProductName,
+        Price,
+        StockQuantity
+    FROM Products
+    WHERE Price BETWEEN @MinimumPrice AND @MaximumPrice
+    ORDER BY Price ASC;
+
+END;
+GO
+```
+
+Execute:
+
+```sql
+EXEC dbo.usp_GetProductsByPrice
+    @MinimumPrice = 100,
+    @MaximumPrice = 2000;
+GO
+```
+
+### 6. Stored Procedure with UPDATE | Procedure com UPDATE
+
+```sql
+CREATE OR ALTER PROCEDURE dbo.usp_UpdateProductPrice
+    @ProductId INT,
+    @NewPrice DECIMAL(10,2)
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    IF @NewPrice < 0
+        THROW 50001, 'Price cannot be negative.', 1;
+
+    UPDATE Products
+    SET Price = @NewPrice
+    WHERE ProductId = @ProductId;
+
+    IF @@ROWCOUNT = 0
+        THROW 50002, 'Product not found.', 1;
+
+END;
+GO
+```
+
+Execute:
+
+```sql
+EXEC dbo.usp_UpdateProductPrice
+    @ProductId = 1,
+    @NewPrice = 5200.00;
+GO
+```
+
+### 7. Practical Exercises | Exercícios Práticos
+
+1. Create a Stored Procedure to retrieve all products.
+2. Create a Stored Procedure to retrieve a product by ID.
+3. Create a Stored Procedure that receives a minimum stock quantity.
+4. Create a Stored Procedure to update product stock.
+5. Use THROW to handle a product not found error.
+
+1. Crie uma Stored Procedure para consultar todos os produtos.
+2. Crie uma Stored Procedure para consultar um produto pelo ID.
+3. Crie uma Stored Procedure que receba uma quantidade mínima de estoque.
+4. Crie uma Stored Procedure para atualizar o estoque.
+5. Utilize THROW para tratar um erro de produto não encontrado.
+
+### 8. Important Notes | Observações Importantes
+
+- Stored Procedures are reusable SQL code blocks.
+- Parameters allow dynamic execution.
+- CREATE OR ALTER allows procedures to be created or updated.
+- Use the `usp_` naming convention for user-defined stored procedures.
+- Avoid concatenating user input into dynamic SQL. Use parameters to help prevent SQL injection.
+
+- Stored Procedures são blocos de código SQL reutilizáveis.
+- Parâmetros permitem execução dinâmica.
+- CREATE OR ALTER permite criar ou atualizar procedures.
+- Utilize a convenção `usp_` para procedimentos armazenados definidos pelo usuário.
+- Evite concatenar entradas do usuário em SQL dinâmico. Utilize parâmetros para ajudar a prevenir SQL Injection.
+
+---
+
+# Module 01 – Final Review
+## Revisão Final do Módulo 01
+
+At the end of this module, the developer should be able to:
+
+Ao finalizar este módulo, o desenvolvedor deverá ser capaz de:
+
+- Create and manage SQL Server databases.
+- Design relational tables.
+- Define primary keys, foreign keys and constraints.
+- Insert, update and delete records.
+- Write SQL queries using SELECT and WHERE.
+- Apply logical and comparison operators.
+- Use aggregate functions and GROUP BY.
+- Relate tables using JOIN.
+- Write subqueries and EXISTS statements.
+- Create and query Views.
+- Create indexes and analyze execution plans.
+- Manage transactions and handle errors.
+- Create and execute Stored Procedures.
+
+- Criar e gerenciar bancos de dados SQL Server.
+- Projetar tabelas relacionais.
+- Definir chaves primárias, estrangeiras e constraints.
+- Inserir, atualizar e excluir registros.
+- Escrever consultas SQL utilizando SELECT e WHERE.
+- Aplicar operadores lógicos e de comparação.
+- Utilizar funções de agregação e GROUP BY.
+- Relacionar tabelas utilizando JOIN.
+- Escrever subconsultas e comandos EXISTS.
+- Criar e consultar Views.
+- Criar índices e analisar planos de execução.
+- Gerenciar transações e tratar erros.
+- Criar e executar Stored Procedures.
