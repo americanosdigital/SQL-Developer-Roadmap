@@ -1,3 +1,5 @@
+                    buymeacoffee.com/americanosdigital                
+
 # SQL Server Developer Roadmap — From Fundamentals to Advanced Topics
 
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red?logo=microsoftsqlserver) ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
@@ -76,3 +78,5 @@ CTEs, CASE expressions, UNION, Window Functions, ranking functions, normalizatio
 **Learn by doing. Build through practice. Keep improving.**
 
 #SQL #SQLServer #TSQL #DotNet #CSharp #SoftwareDevelopment
+
+                    buymeacoffee.com/americanosdigital                
