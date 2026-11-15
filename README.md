@@ -1,3 +1,5 @@
+                    buymeacoffee.com/americanosdigital             
+					
 # Roteiro de Estudos para Desenvolvedor SQL – Do Básico ao Avançado
 
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red?logo=microsoftsqlserver)
@@ -68,3 +70,6 @@ Conecte-se comigo
 ⭐ Se este repositório for útil para você, sinta-se à vontade para explorar, compartilhar seu feedback e conectar-se comigo!
 
 **#SQL #SQLServer #DesenvolvimentoDeBancoDeDados #DotNet #CSharp #EngenhariaDeSoftware**
+     
+	 
+	 buymeacoffee.com/americanosdigital                
