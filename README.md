@@ -7,159 +7,63 @@
 
 ## Sobre este projeto
 
-Este repositório documenta minha jornada para fortalecer e expandir minhas habilidades em SQL e desenvolvimento de bancos de dados, seguindo um roteiro estruturado que vai desde conceitos fundamentais até técnicas avançadas em SQL Server.
+Sobre o projeto
+Este repositório reúne meus estudos práticos de SQL Server e Transact-SQL (T-SQL), organizados em módulos progressivos. Como desenvolvedor Full Stack .NET, quero aprofundar meus conhecimentos em modelagem relacional, consultas, integridade de dados, transações e otimização de desempenho.
 
-O objetivo principal é combinar conhecimento teórico com exercícios práticos, desafios, modelagem de bancos de dados, otimização de consultas e cenários de desenvolvimento do mundo real.
-
-Como desenvolvedor Full Stack .NET, tenho especial interesse em melhorar o desempenho de bancos de dados, escrever consultas SQL eficientes e aplicar as melhores práticas de banco de dados em aplicações corporativas.
-
-## Tecnologias e Ferramentas
-
+Tecnologias e ferramentas
 - Microsoft SQL Server
 - SQL Server Management Studio (SSMS)
 - Transact-SQL (T-SQL)
-- Entity Framework Core (integração futura)
-- ASP.NET Core Web API (integração futura)
 - Git e GitHub
+- Integração futura com Entity Framework Core e ASP.NET Core
 
-## Roteiro de Aprendizado
-
-### 01. Fundamentos de SQL
-- O que é SQL? - Bancos de Dados e Tabelas
-- Tipos de Dados e Valores NULL
-- Operações CRUD (INSERT, SELECT, UPDATE, DELETE)
-- DDL vs. DML
-
-### 02. Consultas SQL
-- Instruções SELECT
-- Condições WHERE
-- AND, OR, NOT
-- ORDER BY
-- GROUP BY
-- DISTINCT e TOP
-
-### 03. Joins (Junções) em SQL
-- INNER JOIN
-- LEFT JOIN
-- RIGHT JOIN
-- FULL OUTER JOIN
-- SELF JOIN
-- CROSS JOIN
-
-### 04. Funções SQL
-- Funções de Agregação (COUNT, SUM, AVG, MIN, MAX)
-- Funções de String (UPPER, LOWER, CONCAT)
-- Funções de Data (GETDATE, DATEADD, DATEDIFF)
-- Tratamento de NULL (ISNULL, COALESCE)
-
-### 05. Restrições (Constraints)
-- PRIMARY KEY
-- FOREIGN KEY
-- UNIQUE
-- NOT NULL
-- CHECK
-- DEFAULT
-
-### 06. Normalização de Bancos de Dados
-- Primeira Forma Normal (1FN)
-- Segunda Forma Normal (2FN)
-- Terceira Forma Normal (3FN)
-- Redundância de Dados
-- Melhores Práticas de Modelagem de Bancos de Dados
-- Quando Desnormalizar
-
-### 07. Subconsultas (Subqueries)
-- Subconsultas em SELECT
-- Subconsultas em FROM
-- Subconsultas em WHERE
-- Subconsultas Correlacionadas
-- EXISTS e NOT EXISTS
-
-### 08. Índices e Views (Visões)
-- Índices Clusterizados e Não Clusterizados
-- Estratégias de Indexação
-- Desempenho de Consultas
-- Planos de Execução
-- Criação e Uso de Views
-- Considerações sobre o Uso de Índices
-
-### 09. Transações
-- BEGIN TRANSACTION
-- COMMIT
-- ROLLBACK
-- Propriedades ACID
-- Níveis de Isolamento
-- Gerenciamento de Transações
-
-### 10. SQL Avançado
-- Common Table Expressions (CTEs)
-- CTEs Recursivas
-- Funções de Janela (Window Functions)
-- Stored Procedures (Procedimentos Armazenados)
-- Triggers (Gatilhos)
-- Tabelas Temporárias
-- SQL Dinâmico
-
-### 11. Projetos Práticos
-- Modelagem de Bancos de Dados
-- Desafios de SQL no Mundo Real
-- Banco de Dados para Gerenciamento de Vendas
-- Otimização de Consultas
-- SQL Server e ASP.NET Integração Core
-- Integração com Entity Framework Core
-
-## Estrutura do Repositório
-
-```text
+Estrutura do repositório
 SQL-Developer-Roadmap/
-│
-├── 01-Basics/
-├── 02-Queries/
-├── 03-Joins/
-├── 04-Functions/
-├── 05-Constraints/
-├── 06-Normalization/
-├── 07-Subqueries/
-├── 08-Indexes-Views/
-├── 09-Transactions/
-├── 10-Advanced-SQL/
-├── 11-Practical-Projects/
-│
-└── README.md
-## Abordagem de Aprendizado
+├── README.md
+├── README-EN.md
+├── PT-BR/
+│   └── Modulo-01-Fundamentos-de-SQL/
+│       └── Modulo_01_Fundamentos_de_SQL.sql
+└── EN/
+    └── Module-01-SQL-Fundamentals/
+        └── Module_01_SQL_Fundamentals.sql
+		
+Módulo 01 — Fundamentos de SQL Server
+O primeiro módulo contém 12 lições:
+1. Criação do banco de dados
+2. Tabelas e tipos de dados
+3. INSERT INTO e SELECT
+4. UPDATE, DELETE e transações
+5. Operadores SQL e filtros
+6. Funções de agregação, GROUP BY e HAVING
+7. Relacionamentos e JOINs
+8. Subconsultas e EXISTS
+9. Views
+10. Índices e planos de execução
+11. Transações e tratamento de erros
+12. Stored Procedures
 
-Cada módulo incluirá:
+Como executar
+1. Instale o SQL Server e o SSMS.
+2. Abra o arquivo .sql da pasta PT-BR no SSMS.
+3. Execute uma lição por vez e confira os resultados.
+4. Para estudar em inglês, utilize o arquivo equivalente na pasta EN.
 
-- Scripts SQL e exemplos práticos.
-- Exercícios práticos e desafios.
-- Cenários de banco de dados do mundo real.
-- Explicações técnicas e documentação.
-- Técnicas de otimização de desempenho.
-- Questões para preparação para entrevistas.
+Atenção: os exemplos de UPDATE, DELETE, COMMIT e Stored Procedures podem modificar dados. Execute-os somente em um banco de treinamento e leia os comentários antes de executar.
 
-## Objetivos do Projeto
+Próximos tópicos
+CTEs, CASE WHEN, UNION, Window Functions, funções de ranking, normalização, tabelas temporárias, SQL dinâmico e integração com Entity Framework Core.
 
-- Aprimorar a proficiência em SQL Server e T-SQL.
-- Desenvolver consultas SQL eficientes e otimizadas.
-- Compreender a arquitetura e o design de bancos de dados.
-- Aplicar as melhores práticas em bancos de dados.
-- Fortalecer habilidades em SQL para desenvolvimento .NET.
-- Criar projetos práticos para o meu portfólio profissional.
+Objetivos
+- Escrever consultas SQL claras e eficientes.
+- Compreender relacionamentos e integridade de dados.
+- Praticar transações, índices e Stored Procedures.
+- Fortalecer conhecimentos aplicáveis ao desenvolvimento C#/.NET.
+- Construir um portfólio prático e documentado.
 
-## Acompanhamento do Progresso
-
-Este repositório está em constante evolução à medida que avanço no roteiro de estudos.
-
-Acredito que o aprendizado contínuo e a implementação prática são essenciais para o crescimento profissional na engenharia de software.
-
-**Aprender fazendo. Construir praticando. Evoluir a cada dia.**
-
-## Conecte-se comigo
-
-- LinkedIn: [Wellington Americano](https://www.linkedin.com/in/wellington-de-oliveira-8100b139)
-- GitHub: [Americanos Digital](https://github.com/americanosdigital)
-
----
+Conecte-se comigo
+- LinkedIn: Wellington Americano (https://www.linkedin.com/in/wellington-de-oliveira-8100b139)
+- GitHub: Americanos Digital (https://github.com/americanosdigital)
 
 ⭐ Se este repositório for útil para você, sinta-se à vontade para explorar, compartilhar seu feedback e conectar-se comigo!
 
