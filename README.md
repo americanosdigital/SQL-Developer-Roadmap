@@ -1,5 +1,7 @@
 https://buymeacoffee.com/americanosdigital
 
+https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL
+
 # SQL Developer Roadmap
 
 Repositório de estudos práticos para desenvolver conhecimentos em **SQL Server e T-SQL**, dos fundamentos a conceitos intermediários de desenvolvimento, otimização e integração de bancos de dados.
