@@ -1,3 +1,5 @@
+https://buymeacoffee.com/americanosdigital
+
 # SQL Developer Roadmap
 
 Repositório de estudos práticos para desenvolver conhecimentos em **SQL Server e T-SQL**, dos fundamentos a conceitos intermediários de desenvolvimento, otimização e integração de bancos de dados.
@@ -68,3 +70,5 @@ As duas versões seguem a mesma sequência de aulas e os mesmos exemplos técnic
 ## Sobre o projeto
 
 Este é um projeto de aprendizado contínuo e portfólio. O objetivo é praticar SQL Server, documentar a evolução técnica e compartilhar exemplos que possam ser revisados por outros desenvolvedores e recrutadores.
+
+https://buymeacoffee.com/americanosdigital
