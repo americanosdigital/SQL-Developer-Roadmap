@@ -7,16 +7,14 @@ https://buymeacoffee.com/americanosdigital
 </path>
 <path d="M6 2v2">
 </path>
-</svg>
-    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL">
+</svg>    
 <h3 class="TextBase-kDAqPL Title-ij922C" data-d-text-flow="" data-d-component="title" data-d-size="md" data-d-weight="semibold" style="color: rgb(255, 255, 255);">
 <span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(255, 255, 255);">
 <strong class="Emphasis-BHzYtQ">
-Compre-me um café via PayPal
+<a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL">Compre-me um café via PayPal</a>
 </strong>
 </span>
-</h3>
-    </a>
+</h3>    
 </div>
 </div>
 
