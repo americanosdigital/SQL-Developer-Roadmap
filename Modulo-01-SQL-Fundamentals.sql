@@ -1,25 +1,9 @@
 
-var html = "<html><body><div class="Box-JYjgF4" data-d-align="center" data-d-auto-spacing="" data-d-component="box" data-d-direction="col" style="--smoothing-background-color: #0070BA; border-radius: var(--dil-radius-md); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); background-color: rgb(0, 112, 186);">
-<div class="Box-JYjgF4" data-d-align="center" data-d-component="row" data-d-direction="row" data-d-justify="center" style="gap: calc(var(--spacing, 0.25rem) * 2);">
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee" data-d-component="icon" style="color: rgb(255, 255, 255); font-size: 18px;">
-<path d="M10 2v2"></path><path d="M14 2v2"></path><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1">
-</path>
-<path d="M6 2v2">
-</path>
-</svg>    
-<h3 class="TextBase-kDAqPL Title-ij922C" data-d-text-flow="" data-d-component="title" data-d-size="md" data-d-weight="semibold" style="color: rgb(255, 255, 255);">
-<span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(255, 255, 255);">
-<strong class="Emphasis-BHzYtQ">
-    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" >
+
+<a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" >
   <img src="https://shields.io" alt="Compre um café pelo PayPal">
 </a>
-</strong>
-</span>
-</h3>    
-</div>
-</div></body></html>"
 
-html
 
 -- =============================================
 -- Roteiro para Desenvolvedor SQL
