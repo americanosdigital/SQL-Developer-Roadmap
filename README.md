@@ -10,7 +10,7 @@
 <h3 class="TextBase-kDAqPL Title-ij922C" data-d-text-flow="" data-d-component="title" data-d-size="md" data-d-weight="semibold" style="color: rgb(255, 255, 255);">
 <span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(255, 255, 255);">
 <strong class="Emphasis-BHzYtQ">
-    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" >
   <img src="https://shields.io" alt="Compre um café pelo PayPal">
 </a>
 </strong>
@@ -176,7 +176,7 @@ This is an ongoing learning and portfolio project. Its goal is to practice SQL S
 <h3 class="TextBase-kDAqPL Title-ij922C" data-d-text-flow="" data-d-component="title" data-d-size="md" data-d-weight="semibold" style="color: rgb(255, 255, 255);">
 <span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(255, 255, 255);">
 <strong class="Emphasis-BHzYtQ">
-    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank">
   <img src="https://shields.io" alt="Compre um café pelo PayPal">
 </a>
 </strong>
