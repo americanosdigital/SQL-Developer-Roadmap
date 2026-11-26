@@ -41,10 +41,10 @@ O roadmap está planejado em **6 módulos**, desenvolvidos e validados progressi
 |---|---|---|
 | Concluído | **Módulo 01 – Fundamentos de SQL** | Databases, tabelas, tipos de dados, CRUD, filtros, agregações, relacionamentos, JOINs, subqueries, views, índices, transações e stored procedures |
 | Concluído | **Módulo 02 – Consultas SQL Intermediárias** | CASE, CTEs, UNION, window functions, ranking, PARTITION BY, APPLY e paginação |
-| Em desenvolvimento | **Módulo 03 – Programação SQL e Objetos do Banco** | Variáveis, controle de fluxo, stored procedures, funções, triggers, tabelas temporárias, tratamento de erros e Dynamic SQL |
-| Planejado | **Módulo 04 – Performance e Otimização** | Execution plans, índices, estatísticas, análise e otimização de consultas |
-| Planejado | **Módulo 05 – Modelagem, Transações e Segurança** | Normalização, integridade referencial, ACID, isolamento, locks, deadlocks, permissões, backup e restore |
-| Planejado | **Módulo 06 – Integração, ETL e Projetos Práticos** | Importação e exportação, conceitos de ETL, integração com .NET, relatórios e projeto prático |
+| Concluído | **Módulo 03 – Programação SQL e Objetos do Banco** | Variáveis, controle de fluxo, stored procedures, funções, triggers, tabelas temporárias, tratamento de erros e Dynamic SQL |
+| Concluído | **Módulo 04 – Performance e Otimização** | Execution plans, índices, estatísticas, análise e otimização de consultas |
+| Concluído | **Módulo 05 – Modelagem, Transações e Segurança** | Normalização, integridade referencial, ACID, isolamento, locks, deadlocks, permissões, backup e restore |
+| Concluído | **Módulo 06 – Integração, ETL e Projetos Práticos** | Importação e exportação, conceitos de ETL, integração com .NET, relatórios e projeto prático |
 
 > Os status refletem o andamento dos estudos e exercícios. Um módulo só será considerado concluído depois que seus exemplos forem executados e revisados.
 
