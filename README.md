@@ -1,4 +1,6 @@
 
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="americanosdigital" data-color="#5F7FFF" data-emoji="" data-font="Cookie" data-text="Pague-me um café" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+
 <div class="Box-JYjgF4" data-d-align="center" data-d-auto-spacing="" data-d-component="box" data-d-direction="col" style="--smoothing-background-color: #0070BA; border-radius: var(--dil-radius-md); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); background-color: rgb(0, 112, 186);">
 <div class="Box-JYjgF4" data-d-align="center" data-d-component="row" data-d-direction="row" data-d-justify="center" style="gap: calc(var(--spacing, 0.25rem) * 2);">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee" data-d-component="icon" style="color: rgb(255, 255, 255); font-size: 18px;">
@@ -115,10 +117,10 @@ The roadmap is planned as **6 modules**, developed and validated progressively.
 |---|---|---|
 | Completed | **Module 01 – SQL Fundamentals** | Databases, tables, data types, CRUD, filtering, aggregates, relationships, JOINs, subqueries, views, indexes, transactions, and stored procedures |
 | Completed | **Module 02 – Intermediate SQL Queries** | CASE, CTEs, UNION, window functions, ranking, PARTITION BY, APPLY, and pagination |
-| In progress | **Module 03 – SQL Programming and Database Objects** | Variables, control flow, stored procedures, functions, triggers, temporary tables, error handling, and Dynamic SQL |
-| Planned | **Module 04 – SQL Performance and Optimization** | Execution plans, indexes, statistics, query analysis, and optimization |
-| Planned | **Module 05 – Database Design, Transactions, and Security** | Normalization, referential integrity, ACID, isolation levels, locks, deadlocks, permissions, backup, and restore |
-| Planned | **Module 06 – Integration, ETL, and Practical Projects** | Data import and export, ETL concepts, .NET integration, reporting, and a practical project |
+| Completed | **Module 03 – SQL Programming and Database Objects** | Variables, control flow, stored procedures, functions, triggers, temporary tables, error handling, and Dynamic SQL |
+| Completed | **Module 04 – SQL Performance and Optimization** | Execution plans, indexes, statistics, query analysis, and optimization |
+| Completed | **Module 05 – Database Design, Transactions, and Security** | Normalization, referential integrity, ACID, isolation levels, locks, deadlocks, permissions, backup, and restore |
+| Completed | **Module 06 – Integration, ETL, and Practical Projects** | Data import and export, ETL concepts, .NET integration, reporting, and a practical project |
 
 > Status reflects learning and exercise progress. A module is considered completed only after its examples have been executed and reviewed.
 
@@ -164,6 +166,9 @@ Both versions follow the same lesson sequence and technical examples.
 
 This is an ongoing learning and portfolio project. Its goal is to practice SQL Server, document technical progress, and share examples that can be reviewed by other developers and recruiters.
 
+
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="americanosdigital" data-color="#5F7FFF" data-emoji="" data-font="Cookie" data-text="Pague-me um café" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
 
 <div class="Box-JYjgF4" data-d-align="center" data-d-auto-spacing="" data-d-component="box" data-d-direction="col" style="--smoothing-background-color: #0070BA; border-radius: var(--dil-radius-md); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); background-color: rgb(0, 112, 186);">
 <div class="Box-JYjgF4" data-d-align="center" data-d-component="row" data-d-direction="row" data-d-justify="center" style="gap: calc(var(--spacing, 0.25rem) * 2);">
