@@ -16,7 +16,7 @@
             <span data-d-stream-run="" data-d-text-flow="run" style="--d-stream-ink: rgb(255, 255, 255);">
                 <strong class="Emphasis-BHzYtQ">
                     <a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL" target="_blank" >
-                        <img src="https://shields.io" alt="Compre um café pelo PayPal">
+                        <img src="https://shields.io" alt="Buy a coffee via PayPal">
                     </a>
                 </strong>
             </span>
