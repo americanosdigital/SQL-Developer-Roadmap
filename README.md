@@ -1,6 +1,4 @@
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="americanosdigital" data-color="#5F7FFF" data-emoji="" data-font="Cookie" data-text="Pague-me um café" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
-
 <div class="Box-JYjgF4" data-d-align="center" data-d-auto-spacing="" data-d-component="box" data-d-direction="col" style="--smoothing-background-color: #0070BA; border-radius: var(--dil-radius-md); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); background-color: rgb(0, 112, 186);">
 <div class="Box-JYjgF4" data-d-align="center" data-d-component="row" data-d-direction="row" data-d-justify="center" style="gap: calc(var(--spacing, 0.25rem) * 2);">
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee" data-d-component="icon" style="color: rgb(255, 255, 255); font-size: 18px;">
@@ -18,6 +16,10 @@
 </strong>
 </span>
 </h3>    
+</div>
+    </div>
+    <div class="Box-JYjgF4" data-d-align="center" data-d-auto-spacing="" data-d-component="box" data-d-direction="col" style="--smoothing-background-color: #0070BA; border-radius: var(--dil-radius-md); --w-box-gutter-block-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-block-start: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-end: calc(var(--spacing, 0.25rem) * 3); --w-box-gutter-inline-start: calc(var(--spacing, 0.25rem) * 3); padding-block: calc(var(--spacing, 0.25rem) * 3); padding-inline: calc(var(--spacing, 0.25rem) * 3); background-color: rgb(0, 112, 186);">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="americanosdigital" data-color="#5F7FFF" data-emoji="" data-font="Cookie" data-text="Pague-me um café" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
 </div>
 </div>
 
