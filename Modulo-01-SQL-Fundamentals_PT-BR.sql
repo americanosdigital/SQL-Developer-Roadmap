@@ -1,30 +1,5 @@
 
 
---------------------------------------------------------------------------------------------------------------------------------------------------
-<div>
-## ☕ Apoie o meu trabalho
-
-Se você acha este projeto útil e gostaria de apoiar o meu aprendizado contínuo e as minhas contribuições para projetos de código aberto (open source), considere me pagar um café!
-
-<p align="center">
-<a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL">
-<img src="https://img.shields.io/badge/PayPal-Donate-0070BA?style=for-the-badge&logo=paypal&logoColor=white" alt="Doar pelo PayPal">
-</a>
-&nbsp; 
-<a href="https://www.buymeacoffee.com/americanosdigital" target="_blank">
-<img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=americanosdigital&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" alt="Me pague um café">
-</a>
-</p>
-
-Obrigado pelo seu apoio! ❤️
-
-</div>
-</a>
-</div>
-
-</div>
---------------------------------------------------------------------------------------------------------------------------------------------------
-
 -- =============================================
 -- Roteiro para Desenvolvedor SQL
 -- Módulo 01 - Fundamentos de SQL
@@ -121,27 +96,3 @@ END;
 GO
 
 
---------------------------------------------------------------------------------------------------------------------------------------------------
-<div>
-## ☕ Apoie o meu trabalho
-
-Se você acha este projeto útil e gostaria de apoiar o meu aprendizado contínuo e as minhas contribuições para projetos de código aberto (open source), considere me pagar um café!
-
-<p align="center">
-<a href="https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL">
-<img src="https://img.shields.io/badge/PayPal-Donate-0070BA?style=for-the-badge&logo=paypal&logoColor=white" alt="Doar pelo PayPal">
-</a>
-&nbsp; 
-<a href="https://www.buymeacoffee.com/americanosdigital" target="_blank">
-<img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=americanosdigital&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" alt="Me pague um café">
-</a>
-</p>
-
-Obrigado pelo seu apoio! ❤️
-
-</div>
-</a>
-</div>
-
-</div>
---------------------------------------------------------------------------------------------------------------------------------------------------
