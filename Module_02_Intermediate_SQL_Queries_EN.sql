@@ -1,4 +1,3 @@
-                    buymeacoffee.com/americanosdigital                
 
 /*
 ===============================================================================
@@ -719,5 +718,3 @@ You do not need to modify database tables to complete this module.
 END OF MODULE 02 — INTERMEDIATE SQL QUERIES
 ===============================================================================
 */
-
-                    buymeacoffee.com/americanosdigital                
