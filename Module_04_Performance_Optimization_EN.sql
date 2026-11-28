@@ -1,6 +1,3 @@
-https://buymeacoffee.com/americanosdigital
-
-https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL
 
 /*
 ================================================================================
@@ -445,7 +442,3 @@ After completing this module, you should be able to:
 END OF MODULE 04
 ================================================================================
 */
-
-https://buymeacoffee.com/americanosdigital
-
-https://www.paypal.com/donate/?hosted_button_id=YUM9WDEBUMNXL
