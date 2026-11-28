@@ -1,6 +1,4 @@
 
-https://buymeacoffee.com/americanosdigital
-
 /*
 ================================================================================
 SQL DEVELOPER ROADMAP
@@ -394,5 +392,3 @@ retorne os produtos ordenados por preco e trate erros com TRY/CATCH e THROW.
 FIM DO MODULO 03
 ================================================================================
 */
-
-https://buymeacoffee.com/americanosdigital
